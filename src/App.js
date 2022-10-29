@@ -1,6 +1,6 @@
-import ExpenseItem from './Component/ExpenseItem/ExpenseItem'
-import styled from "styled-components";
 
+import styled from "styled-components";
+import Expense from './Component/ExpenseItem/Expense'
 function App() {
   const expenses = [
     {
@@ -28,29 +28,9 @@ function App() {
   ];
   return (
     <Container>
-      <div>
-        <ExpenseItem
-          title={expenses[0].title}
-          // title="toilet Paper" props can be hard coded 
-          amount={expenses[0].amount}
-          date={expenses[0].date}
-        />
-        <ExpenseItem
-          title={expenses[1].title}
-          amount={expenses[1].amount}
-          date={expenses[1].date}
-        />
-        <ExpenseItem
-          title={expenses[2].title}
-          amount={expenses[2].amount}
-          date={expenses[2].date}
-        />
-        <ExpenseItem
-          title={expenses[3].title}
-          amount={expenses[3].amount}
-          date={expenses[3].date}
-        />
-      </div>
+      
+       <Expense  />
+      
     </Container>
   );
 }
