@@ -1,6 +1,7 @@
 
 import styled from "styled-components";
-import Expense from './Component/ExpenseItem/Expense'
+import Expense from './Component/ExpenseItem/Expenses/Expense'
+import NewExpense from "./Component/NewExpense/NewExpense";
 function App() {
   const expenses = [
     {
@@ -28,9 +29,9 @@ function App() {
   ];
   return (
     <Container>
-      
-       <Expense  />
-      
+      <NewExpense/>
+       <Expense expenses={expenses}  />
+      {/* first expenses is for the prop that is in expense.jsx ={expenses } is referring to the array above  */}
     </Container>
   );
 }
