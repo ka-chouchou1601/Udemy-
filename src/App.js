@@ -27,14 +27,19 @@ function App() {
       date: new Date(2021, 5, 12),
     },
   ];
+  const addExpenseHandler = (expense) => {
+    console.log("In App.js");
+    console.log(expenses);
+  };
   return (
     <Container>
-      <NewExpense/>
+      <NewExpense onAddExpense={addExpenseHandler}/>
        <Expense expenses={expenses}  />
       {/* first expenses is for the prop that is in expense.jsx ={expenses } is referring to the array above  */}
     </Container>
   );
 }
+
 
 const Container = styled.div`
   
