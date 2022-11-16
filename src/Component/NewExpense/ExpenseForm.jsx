@@ -54,6 +54,8 @@ const submitHandler=(event)=>{
     date: new Date(enteredDate)
 
   };
+
+  
 props.onSaveExpenseData(expenseData);
 setEnteredTitle('');
 setEnteredAmount('');

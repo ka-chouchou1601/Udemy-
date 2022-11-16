@@ -1,31 +1,54 @@
-import React from 'react'
+import React, {useState} from 'react'
 import './Expense.css'
 import ExpenseItem from "./ExpenseItem";
+import ExpenseFilter from "./ExpenseFilter"
+
 const Expense = (props) => {
+
+  const [filteredYear, setFilteredYear] = useState('2020');
+
+  const filterChangeHandler = selectedYear => {
+    setFilteredYear(selectedYear);
+  };
+  //here is the function it points at and it receives a state that changes what the components renders on the screen 
   return (
-    <div className='expenses'>
-      <ExpenseItem
-      
-        title={props.expenses[0].title}
-        // title="toilet Paper" props can be hard coded
-        amount={props.expenses[0].amount}
-        date={props.expenses[0].date}
-      />
-      <ExpenseItem
-        title={props.expenses[1].title}
-        amount={props.expenses[1].amount}
-        date={props.expenses[1].date}
-      />
-      <ExpenseItem
-        title={props.expenses[2].title}
-        amount={props.expenses[2].amount}
-        date={props.expenses[2].date}
-      />
-      <ExpenseItem
-        title={props.expenses[3].title}
-        amount={props.expenses[3].amount}
-        date={props.expenses[3].date}
-      />
+    <div>
+      <div className="expenses">
+        <ExpenseFilter
+          selected={filteredYear}
+          onChangeFilter={filterChangeHandler}
+          //here is an event Listener in the event listener you pass a pointer it point at the function 
+        />
+       {props.items.map((expense)=>(
+        <ExpenseItem
+        key={expense.id}
+          title={expense.title}
+          amount={expense.amount}
+          date={expense.date}
+        />
+       ))}
+        {/* <ExpenseItem
+          title={props.items[0].title}
+          // title="toilet Paper" props can be hard coded
+          amount={props.items[0].amount}
+          date={props.items[0].date}
+        />
+        <ExpenseItem
+          title={props.items[1].title}
+          amount={props.items[1].amount}
+          date={props.items[1].date}
+        />
+        <ExpenseItem
+          title={props.items[2].title}
+          amount={props.items[2].amount}
+          date={props.items[2].date}
+        />
+        <ExpenseItem
+          title={props.items[3].title}
+          amount={props.items[3].amount}
+          date={props.items[3].date}
+        /> */}
+      </div>
     </div>
   );
 }
