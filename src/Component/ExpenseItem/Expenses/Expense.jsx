@@ -1,32 +1,46 @@
-import React, {useState} from 'react'
-import './Expense.css'
+import React, { useState } from "react";
+import "./Expense.css";
 import ExpenseItem from "./ExpenseItem";
-import ExpenseFilter from "./ExpenseFilter"
+import ExpenseFilter from "./ExpenseFilter";
 
 const Expense = (props) => {
+  const [filteredYear, setFilteredYear] = useState("2020");
 
-  const [filteredYear, setFilteredYear] = useState('2020');
-
-  const filterChangeHandler = selectedYear => {
+  const filterChangeHandler = (selectedYear) => {
     setFilteredYear(selectedYear);
   };
-  //here is the function it points at and it receives a state that changes what the components renders on the screen 
+  //here is the function it points at and it receives a state that changes what the components renders on the screen
+  const filteredExpenses = props.items.filter(expense => {
+    return expense.date.getFullYear().toString() === filteredYear;
+  });
+
+  //how to rendered filtered year and use filter function
+ 
   return (
     <div>
       <div className="expenses">
         <ExpenseFilter
           selected={filteredYear}
           onChangeFilter={filterChangeHandler}
-          //here is an event Listener in the event listener you pass a pointer it point at the function 
+          //here is an event Listener in the event listener you pass a pointer it point at the function
         />
-       {props.items.map((expense)=>(
-        <ExpenseItem
-        key={expense.id}
-          title={expense.title}
-          amount={expense.amount}
-          date={expense.date}
-        />
-       ))}
+        {filteredExpenses.length === 0 ? (
+        <p>No expenses Fount</p>
+          ) :(
+           filteredExpenses.map((expense) => (
+          <ExpenseItem
+            key={expense.id}
+            title={expense.title}
+            amount={expense.amount}
+            date={expense.date}
+          />
+        ))
+        )
+        
+         }
+         {/* here are the ternury operators */}
+       
+
         {/* <ExpenseItem
           title={props.items[0].title}
           // title="toilet Paper" props can be hard coded
@@ -51,6 +65,6 @@ const Expense = (props) => {
       </div>
     </div>
   );
-}
+};
 
-export default Expense
+export default Expense;

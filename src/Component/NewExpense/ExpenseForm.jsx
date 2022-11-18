@@ -66,11 +66,15 @@ setEnteredDate('');
 
   return (
     <form onSubmit={submitHandler}>
-    {/* submitHandler it listens to the submit button and submits the form */}
+      {/* submitHandler it listens to the submit button and submits the form */}
       <div className="new-expense__controls">
         <div className="new-expense__control">
           <label>Title</label>
-          <input type="text" value={enteredTitle} onChange={titleChangeHandler} />
+          <input
+            type="text"
+            value={enteredTitle}
+            onChange={titleChangeHandler}
+          />
           {/* two way binding we feed the state back into the input */}
         </div>
         <div className="new-expense__control">
@@ -94,8 +98,11 @@ setEnteredDate('');
           />
         </div>
       </div>
+      { }
       <div className="new-expense__actions">
-        <button type="submit"> Add Expense</button>
+        <button type="button" onClick={props.onCancel}>Cancel</button>
+        <button type="submit" > Add Expense</button>
+      
       </div>
     </form>
   );
