@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 import "./Expense.css";
 import ExpenseItem from "./ExpenseItem";
-import ExpenseFilter from "./ExpenseFilter";
-
+import ExpenseFilter from "./ExpenseFilter"; 
+import ExpenseChart from "./ExpenseChart";
 const Expense = (props) => {
   const [filteredYear, setFilteredYear] = useState("2020");
 
@@ -24,22 +24,22 @@ const Expense = (props) => {
           onChangeFilter={filterChangeHandler}
           //here is an event Listener in the event listener you pass a pointer it point at the function
         />
-        {filteredExpenses.length === 0 ? (
-        <p>No expenses Fount</p>
-          ) :(
-           filteredExpenses.map((expense) => (
-          <ExpenseItem
-            key={expense.id}
-            title={expense.title}
-            amount={expense.amount}
-            date={expense.date}
-          />
-        ))
-        )
-        
-         }
-         {/* here are the ternury operators */}
        
+         {/* <ExpenseChart expenses={filteredExpenses} /> */}
+        {filteredExpenses.length === 0 ? (
+          <p>No expenses Fount</p>
+        ) : (
+          filteredExpenses.map((expense) => (
+            <ExpenseItem
+              key={expense.id}
+              title={expense.title}
+              amount={expense.amount}
+              date={expense.date}
+            />
+          ))
+        )}
+
+        {/* here are the ternury operators */}
 
         {/* <ExpenseItem
           title={props.items[0].title}
