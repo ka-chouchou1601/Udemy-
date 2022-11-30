@@ -25,7 +25,7 @@ const Expense = (props) => {
           //here is an event Listener in the event listener you pass a pointer it point at the function
         />
        
-         {/* <ExpenseChart expenses={filteredExpenses} /> */}
+         <ExpenseChart expenses={filteredExpenses} /> 
         {filteredExpenses.length === 0 ? (
           <p>No expenses Fount</p>
         ) : (
